@@ -1,0 +1,90 @@
+CREATE DATABASE fi CHARACTER SET utf8 COLLATE utf8_general_ci;글
+
+테이블 4개 구조. 
+카테고리 | cat
+글      | art
+댓글	| com
+회원관리 | mem
+메세징   | msg
+
+	CREATE TABLE cat (
+	    id  int(3) NOT NULL AUTO_INCREMENT,
+	    tab  tinytext NOT NULL ,
+	    description  text NULL ,
+	    created  datetime NOT NULL ,
+	    PRIMARY KEY (id)
+	);
+
+	CREATE TABLE art (
+	    no  int(7) NOT NULL AUTO_INCREMENT,
+	    id  int(7) NULL ,
+	    tab  tinytext NOT NULL ,
+	    title  tinytext NOT NULL ,
+            description  text NULL ,
+	    hit  int (5) NOT NULL ,
+	    usrname  varchar(12) NULL ,
+	    created  datetime NOT NULL ,
+	    modtime  datetime NULL ,
+	    PRIMARY KEY (no)
+	);
+
+	CREATE TABLE com (
+	    id  int(7) NOT NULL AUTO_INCREMENT,
+	    no  int(7) NOT NULL ,
+	    tab  tinytext NOT NULL ,
+	    comment  text NULL ,
+	    usrname  varchar(12) NULL ,
+	    created  datetime NOT NULL ,
+	    modtime  datetime NULL ,
+	    PRIMARY KEY (id)
+	);
+
+	CREATE TABLE mem (
+	    id  int(7) NOT NULL AUTO_INCREMENT,
+	    name  varchar(20) NOT NULL ,
+	    usrname  varchar(20) NOT NULL ,
+	    pw  varchar(20) NOT NULL ,
+	    email  tinytext NOT NULL ,
+	    memo text NULL ,
+	    created  datetime NOT NULL ,
+	    PRIMARY KEY (id)
+	);
+	
+	CREATE TABLE msg (
+	    id  int(7) NOT NULL AUTO_INCREMENT,
+	    sender  varchar(20) NOT NULL ,
+	    receiver  varchar(20) NOT NULL ,
+	    title  varchar(20) NOT NULL ,
+	    contents text NULL ,
+	    created  datetime NOT NULL ,
+	    PRIMARY KEY (id)
+	);
+	
+
+
+
+INSERT INTO cat (tab,description,created) VALUES ('About', '', now());
+INSERT INTO cat (tab,description,created) VALUES ('Study', '', now());
+INSERT INTO cat (tab,description,created) VALUES ('Picture', '', now());
+INSERT INTO cat (tab,description,created) VALUES ('Freeboard', '', now());
+INSERT INTO cat (tab,description,created) VALUES ('Other', '', now());
+
+INSERT INTO art (tab,title,description,created) VALUES ('About', 'testing', '', now());
+INSERT INTO art (tab,title,description,created) VALUES ('About', 'testing2', '', now());
+INSERT INTO art (tab,title,description,created) VALUES ('About', 'testing3', '', now());
+INSERT INTO art (tab,title,description,created) VALUES ('Study', 'testing3', '', now());
+INSERT INTO art (tab,title,description,created) VALUES ('Study', 'testing2', '', now());
+INSERT INTO art (tab,title,description,created) VALUES ('Study', 'testing1', '', now());
+
+<form action="add_process.php" method="post">
+	                <h2>
+                        <label>제목</label>
+                        <input type="text" name="title" />
+                    </h2>
+	                <div class="description">
+                        <label>본문<label>
+	                	<textarea name="description">
+	                	</textarea>	                    
+	                </div>
+	                <input type="submit" />
+            	</form>
